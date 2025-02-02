@@ -15,3 +15,14 @@ get("/square/results") do
 
   erb(:square_results)
 end
+
+get("/square_root/new") do
+  erb(:square_root_new)
+end
+
+get("/square_root/results") do
+  num = params.fetch("number").to_f
+  @num_square_root = (num ** (0.5)).to_f
+
+  erb(:square_root_results)
+end

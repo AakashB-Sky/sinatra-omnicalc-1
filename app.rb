@@ -26,3 +26,7 @@ get("/square_root/results") do
 
   erb(:square_root_results)
 end
+
+get("/random/new") do
+  erb(:random_new)
+end

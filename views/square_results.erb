@@ -2,11 +2,20 @@
   Square Results
 </h1>
 
-<div class="results">
-  Number <br>
-  <%= @num %> <br>
-  Square <br>
-  <%= @num_squared %>
-</div>
+<dl>
+  <dt>
+    Number
+  </dt>
+  <dd>
+    <%= params.fetch("number") %>
+  </dd>
+
+  <dt>
+    Square
+  </dt>
+  <dd>
+    <%= @num_squared %>
+  </dd>
+  
 <br>
-<a href="/square_new">Calculate another square</a>
+<a href="/square/new">Calculate another square</a>

@@ -4,16 +4,16 @@
 
 <dl>
   <dt>APR</dt>
-  <dd><%= params.fetch("user_apr") %></dd>
+  <dd><%= format("%.4f", params.fetch("user_apr").to_f) %>%</dd>
   
   <dt>Number of years</dt>
   <dd><%= params.fetch("user_years") %></dd>
 
   <dt>Principal</dt>
-  <dd><%= params.fetch("user_pv") %></dd>
+  <dd>$<%= format("%.2f", params.fetch("user_pv").to_f) %></dd>
 
   <dt>Monthly payment</dt>
-  <dd><%= @monthly_pmt %></dd>
+  <dd>$<%= format("%.2f", @monthly_pmt) %></dd>
 </dl>
 
 <a href="/payment/new">Calculate another payment</a>

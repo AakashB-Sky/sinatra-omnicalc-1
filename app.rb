@@ -45,7 +45,7 @@ get("/payment/new") do
 end
 
 get("/payment/results") do
-  apr = params.fetch("user_apr").to_f
+  apr = params.fetch("user_apr").to_f / 100
   years = params.fetch("user_years").to_f # might need to change this to .to_i to match target
   principal = params.fetch("user_pv").to_f
   monthly_rate = apr / 12

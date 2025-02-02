@@ -45,14 +45,17 @@ get("/payment/new") do
 end
 
 get("/payment/results") do
-  @apr = params.fetch("user_apr").to_f / 100
+  apr = params.fetch("user_apr").to_f / 100
   years = params.fetch("user_years").to_f # might need to change this to .to_i to match target
   principal = params.fetch("user_pv").to_f
-  monthly_rate = @apr / 12
+  monthly_rate = apr / 12
   loan_months = years * 12
   
-  @monthly_pmt = principal * (monthly_rate * (1 + monthly_rate) ** loan_months) / (((1 + monthly_rate) ** loan_months) - 1)
-  @monthly_pmt = @monthly_pmt.round(2)
+  monthly_pmt = principal * (monthly_rate * (1 + monthly_rate) ** loan_months) / (((1 + monthly_rate) ** loan_months) - 1)
+  monthly_pmt = monthly_pmt.round(2)
 
+  # format principal and monthly_pmt. Got this code from ChatGPT
+  @formatted_principal = "$#{format('%.2f', principal).reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse}"
+  @formatted_monthly_pmt = "$#{format('%.2f', monthly_pmt).reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse}"
   erb(:payment_results)
 end

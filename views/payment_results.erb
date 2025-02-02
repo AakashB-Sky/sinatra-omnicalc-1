@@ -10,10 +10,10 @@
   <dd><%= params.fetch("user_years") %></dd>
 
   <dt>Principal</dt>
-  <dd>$<%= format("%.2f", params.fetch("user_pv").to_f) %></dd>
+  <dd><%= @formatted_principal %></dd>
 
   <dt>Monthly payment</dt>
-  <dd>$<%= format("%.2f", @monthly_pmt) %></dd>
+  <dd><%= @formatted_monthly_pmt %></dd>
 </dl>
 
 <a href="/payment/new">Calculate another payment</a>
